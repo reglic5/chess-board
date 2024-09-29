@@ -1,0 +1,63 @@
+* {
+    // box-sizing: border-box;
+    /* zrušení kvůli nastavení bordru jednotlivých políček - aby se nezapočítávali do rozměru buňky tabulky =>> zachování tvaru čtverce*/
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: "PT Serif", serif;
+}
+
+h1 {
+    color: rgb(45, 45, 45);
+    font-size: 2.5rem;
+    padding-top: 50px;
+    padding-bottom: 25px;
+    text-align: center;
+    margin: auto;
+}
+
+.chess-board {
+    background-image: url(walnut-texture.jpg);
+    margin: auto;
+    border-spacing: 0;
+}
+
+td {
+    height: 50px;
+    width: 50px;
+}
+
+.color-light {
+    background-color: rgb(230, 230, 230);
+    border: none;
+}
+
+.color-dark {
+    background-color: transparent;
+}
+
+.board-frame-element {
+    font-family: "PT Serif", serif;
+    color: rgb(230, 230, 230);
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.board-frame-element-flipped {
+    transform: scale(-1, -1);
+}
+
+.border-bottom {
+    border-bottom: solid 3px rgb(230, 230, 230);
+}
+.border-top {
+    border-top: solid 3px rgb(230, 230, 230);
+}
+.border-left {
+    border-left: solid 3px rgb(230, 230, 230);
+}
+.border-right {
+    border-right: solid 3px rgb(230, 230, 230);
+}

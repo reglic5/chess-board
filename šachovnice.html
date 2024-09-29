@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Šachovnice</title>
+        <link
+            rel="stylesheet"
+            href="style.css
+        "
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+    <body>
+        <!-- bingus.dukla166.cz/tutorials/chess/ -->
+        <!-- ZADÁNÍ: Vytvořte program v JavaScriptu, který dynamicky vygeneruje tabulku o rozměrech 8x8 a naformátuje ji
+        tak, aby připomínala šachovnici. Požadavky na funkčnost: Generování tabulky: Program musí dynamicky vytvořit
+        HTML tabulku o rozměrech 8x8 (tj. 8 řádků a 8 sloupců). Atributy: Každá buňka tabulky musí mít přiřazené vhodné
+        atributy (např. class / id) tak, aby bylo možné buňky stylovat pomocí CSS. Buňky by měly být střídavě označeny
+        třídami/id např. dark - light pro reprezentaci polí šachovnice. Stylování: Pomocí CSS upravte vzhled tabulky
+        tak, aby vypadala jako šachovnice: Požadavky na implementaci a tipy: Program musí být napsán v JavaScriptu a
+        musí dynamicky vygenerovat HTML kód pro tabulku. Stylování řeší CSS a aplikováno na class/id, které přiřadíte
+        buňkám tabulky. Zvažte použití smyček (for) v JavaScriptu pro generování řádků a buněk tabulky. Pro střídání
+        tříd (white, black) můžete využít operátor zbytku (%) při určení, zda se jedná o lichou nebo sudou buňku. Můžete
+        si přidat libovolné další CSS stylování, aby šachovnice vypadala ještě lépe (např. velikost buňky, okraje,
+        apod.). -->
+
+        <h1>Šachovnice</h1>
+
+        <script>
+            document.write("<table class='chess-board'>");
+
+            const rowNames = [8, 7, 6, 5, 4, 3, 2, 1];
+            const columnNames = ["A", "B", "C", "D", "E", "F", "G", "H"];
+
+            writeLetterRow("border-bottom", "board-frame-element-flipped");
+
+            for (let row = 0; row < 8; row++) {
+                document.write(`<tr>`);
+                document.write(`<td class="board-frame-element"> ${rowNames[row]}</td>`);
+                // rowNames[row] ->> přístup k prvkům v poli - výběr podle jeho indexu
+
+                for (let column = 0; column < 8; column++) {
+                    let elementClass;
+                    if ((row + column) % 2 == 0) {
+                        elementClass = "color-light";
+                    } else {
+                        elementClass = "color-dark";
+                    }
+
+                    // rozpoznání elementů, kterým nastavím border a na jaké straně
+                    if (column === 0) {
+                        elementClass = elementClass + " border-left";
+                    } else if (column === 7) {
+                        elementClass = elementClass + " border-right";
+                    }
+                    document.write(`<td class="${elementClass}"></td>`);
+                }
+
+                document.write(
+                    `<td class="board-frame-element"> <div class="board-frame-element-flipped">${rowNames[row]}</div></td>`
+                );
+                document.write(`</tr>`);
+            }
+
+            writeLetterRow("border-top", "");
+
+            document.write("</table>");
+
+            function writeLetterRow(borderClass, flippedClass) {
+                const tdElement = `<td class="board-frame-element"></td>`;
+
+                // document.write("<tr><td class='boardFrame'></td>");
+                document.write(`<tr>`);
+                document.write(tdElement);
+
+                for (let column = 0; column < 8; column++) {
+                    document.write(
+                        `<td class="board-frame-element ${borderClass}"> <div class="${flippedClass}">${columnNames[column]}</div></td>`
+                    );
+                }
+
+                document.write(tdElement);
+                document.write(`</tr>`);
+            }
+        </script>
+    </body>
+</html>
